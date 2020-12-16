@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>challenge.castgroup</groupId>
-	<artifactId>bankaccounts.castgroup</artifactId>
+	<artifactId>bank-accounts</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>challenge.castgroup.bank.accounts</name>
 	<description>Bank Accounts</description>
