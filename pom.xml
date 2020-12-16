@@ -9,8 +9,8 @@
 		<relativePath/>
 	</parent>
 
-	<groupId>challenge.castgroup.bank.accounts</groupId>
-	<artifactId>bankaccounts</artifactId>
+	<groupId>challenge.castgroup</groupId>
+	<artifactId>bankaccounts.castgroup</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>challenge.castgroup.bank.accounts</name>
 	<description>Bank Accounts</description>
