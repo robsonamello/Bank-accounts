@@ -1,77 +1,78 @@
-# Desafio CAST - Contas Banc√°rias (Bank Accounts)
+# Desafio CAST - Contas Banc·rias (Bank Accounts)
 
-Api REST que permitir realizar cadastro de pessoas, contas, movimenta√ß√µes banc√°rias e autentica√ß√£o 
-com permiss√µes baseadas em pap√©is(ROLES)
+Api REST que permitir realizar cadastro de pessoas, contas, movimentaÁıes banc·rias e autenticaÁ„o 
+com permissıes baseadas em papÈis(ROLES)
 
    - Java 1.8
-   - Autentica√ß√£o Basic Utilizando Spring Security
-   - Banco de dados em m√©moria (H2);
-   - Maven como gerenciador de depend√™ncias
-   - Persist√™ncia com Hibernate e JPA
-   - Aplica√ß√£o REST com Spring boot. Framework (2.1.4.RELEASE)
-   - Servlet Containner Tomcat embarcado na aplica√ß√£o
+   - AutenticaÁ„o Basic Utilizando Spring Security
+   - Banco de dados em mÈmoria (H2);
+   - Maven como gerenciador de dependÍncias
+   - PersistÍncia com Hibernate e JPA
+   - AplicaÁ„o REST com Spring boot. Framework (2.1.4.RELEASE)
+   - Servlet Containner Tomcat embarcado na aplicaÁ„o
    - JWT como Token
-   - Testes unit√°rios utilizando mockito. Vers√£o 1.10.19
-   - As senhas dos usu√°rios cadastrados s√£o persistidas criptografadas
+   - Testes unit·rios utilizando mockito. Vers„o 1.10.19
+   - As senhas dos usu·rios cadastrados s„o persistidas criptografadas
 
 ### Build
 
-A aplica√ß√£o foi desenvolvida com Spring Boot.
+A aplicaÁ„o foi desenvolvida com Spring Boot.
 
-Para realizar o processo de Build e instalar as depend√™ncias do projeto, deve-se executar o Maven:
+Para realizar o processo de Build e instalar as dependÍncias do projeto, deve-se executar o Maven:
 
 ```sh
+$ git clone https://github.com/robsonamello/bank-accounts.git
 $ cd bankaccounts
 $ mvn clean bankaccounts
 ```
 
-Execu√ß√£o da aplica√ß√£o ap√≥s Build.
+ExecuÁ„o da aplicaÁ„o apÛs Build.
 
 ```sh
 $ cd bankaccounts
 $ cd target
 $ java -jar bankaccounts-0.0.1-SNAPSHOT.jar
 ```
-A aplica√ß√£o ser√° iniciada na porta 443:
+A aplicaÁ„o ser· iniciada na porta 443:
 
 http://localhost:443
 
 #### Rotas
 
-   - As rotas est√£o listadas de acordo com suas permiss√µes. A obten√ß√£o do TOKEN √© uma etapa obrigat√≥ria para o consumo dos demais servi√ßos listados;
-   - Ao executar o servi√ßo de obten√ß√£o do TOKEN, √© preciso copiar o retorno contido no HEADER e colar no Authorization dos demais servi√ßos
-   - Exemplo v√°lido: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGUiOiJBIiwiZXhwIjoxNjA4MTM5MjYwfQ.X47JbjA2WLZKvhxuUmVxcUkcl6OMQ1VOmVgdqtwnU0eFE9HmTEmO0ErCkcQwLF6iAFK6EJEN9rp99m6TLuY8Gg
-   -  O login e a permiss√£o s√£o armazenados no TOKEN da aplica√ß√£o onde √© feita a verifica√ß√£o com o registo cadastrado no banco de dados;
-   -  Sempre que a aplica√ß√£o sobre em mem√≥ria um usu√°rio com permiss√£o ADMIN √© criado, com as seguintes credenciais:
-   -  Login: admin, Senha: admin, Permiss√£o: Administrador
-   -  As siglas cadastradas s√£o A, M e G (ADMIN, MANAGER E GUEST)
-   -  S√≥ √© poss√≠vel ter uma permiss√£o por usu√°rio. A implementa√ß√£o de realacionamento N:N n√£o foi contemplada nessa vers√£o
-   -  Para fins did√°ticos, o perfil Administrador pode acessar todos os recursos, Gerente tamb√©m, exceto controle de acesso e Visitante pode apenas consultar dados da pessoa
+   - As rotas est„o listadas de acordo com suas permissıes. A obtenÁ„o do TOKEN È uma etapa obrigatÛria para o consumo dos demais serviÁos listados;
+   - Ao executar o serviÁo de obtenÁ„o do TOKEN, È preciso copiar o retorno contido no HEADER e colar no Authorization dos demais serviÁos
+   - Exemplo v·lido: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGUiOiJBIiwiZXhwIjoxNjA4MTM5MjYwfQ.X47JbjA2WLZKvhxuUmVxcUkcl6OMQ1VOmVgdqtwnU0eFE9HmTEmO0ErCkcQwLF6iAFK6EJEN9rp99m6TLuY8Gg
+   -  O login e a permiss„o s„o armazenados no TOKEN da aplicaÁ„o onde È feita a verificaÁ„o com o registo cadastrado no banco de dados;
+   -  Sempre que a aplicaÁ„o sobre em memÛria um usu·rio com permiss„o ADMIN È criado, com as seguintes credenciais:
+   -  Login: admin, Senha: admin, Permiss„o: Administrador
+   -  As siglas cadastradas s„o A, M e G (ADMIN, MANAGER E GUEST)
+   -  SÛ È possÌvel ter uma permiss„o por usu·rio. A implementaÁ„o de realacionamento N:N n„o foi contemplada nessa vers„o
+   -  Para fins did·ticos, o perfil Administrador pode acessar todos os recursos, Gerente tambÈm, exceto controle de acesso e Visitante pode apenas consultar dados da pessoa
 
-| Descri√ß√£o                                   | URL     								                            |  Permiss√£o                          | 
+| DescriÁ„o                                   | URL     								                            |  Permiss„o                          | 
 | ------------------------------------------- | ------------------------------------------------------------------- | ----------------------------------- |
-| Autentica√ß√£o do usu√°rio (retorno header)    | POST Request to: http://localhost:443/signin                        | P√∫blica                             |
-| Cadastro de Pessoas e Contas Banc√°rias      | POST Request to: http://localhost:443/person                        | Administrador e Gerente             |
-| Atualiza√ß√£o de Pessoas e Contas Banc√°rias   | PUT Request to: http://localhost:443/person                         | Administrador e Gerente             |
-| Listagem de Pessoas e Contas Banc√°rias      | GET Request to: http://localhost:443/person                         | Administrador, Gerente e Visitante  |
-| Filtro de Pessoas e Contas Banc√°rias        | GET Request to: http://localhost:443/person/{personId}              | Administrador, Gerente e Visitante  |
-| Opera√ß√£o de saque e dep√≥sito                | POST Request to: http://localhost:443/person/finantialtransaction}  | Administrador, Gerente              |
-| Exclus√£o de Pessoas e Contas Banc√°rias      | DELETE Request to: http://localhost:443/person/{personId}           | Administrador, Gerente              |
-| Cadastro de usu√°rio da aplica√ß√£o            | POST Request to: http://localhost:443/users                         | Administrador                       |
+| AutenticaÁ„o do usu·rio (retorno header)    | POST Request to: http://localhost:443/signin                        | P˙blica                             |
+| Cadastro de Pessoas e Contas Banc·rias      | POST Request to: http://localhost:443/person                        | Administrador e Gerente             |
+| AtualizaÁ„o de Pessoas e Contas Banc·rias   | PUT Request to: http://localhost:443/person                         | Administrador e Gerente             |
+| Listagem de Pessoas e Contas Banc·rias      | GET Request to: http://localhost:443/person                         | Administrador, Gerente e Visitante  |
+| Filtro de Pessoas e Contas Banc·rias        | GET Request to: http://localhost:443/person/{personId}              | Administrador, Gerente e Visitante  |
+| OperaÁ„o de saque e depÛsito                | POST Request to: http://localhost:443/person/finantialtransaction}  | Administrador, Gerente              |
+| Exclus„o de Pessoas e Contas Banc·rias      | DELETE Request to: http://localhost:443/person/{personId}           | Administrador, Gerente              |
+| Cadastro de usu·rio da aplicaÁ„o            | POST Request to: http://localhost:443/users                         | Administrador                       |
 
-### Observa√ß√µes para o consumo dos servi√ßos
+### ObservaÁıes para o consumo dos serviÁos
 
-Seguem algumas orienta√ß√µes para facilitar o entendimento da regra de neg√≥cio. O cliente de consumo dos servi√ßos utilizado nesse desafio foi o Insomnia 2020.5.2, mas voc√™ pode usar o cliente de sua prefer√™ncia:
+Seguem algumas orientaÁıes para facilitar o entendimento da regra de negÛcio. O cliente de consumo dos serviÁos utilizado nesse desafio foi o Insomnia 2020.5.2, mas vocÍ pode usar o cliente de sua preferÍncia:
 
-O retorno do login √© exibido conforme a imagem abaixo
+O retorno do login È exibido conforme a imagem abaixo
 
 ![token](./token.png)
 
-Ao recuperar o token contendo as informa√ß√µes do usu√°rio e perfil, incluir no cabe√ßalho dos demais servi√ßo a serem validados por autentica√ß√£o
+Ao recuperar o token contendo as informaÁıes do usu·rio e perfil, incluir no cabeÁalho dos demais serviÁo a serem validados por autenticaÁ„o
 
 ![example](./example.png)
 
-Algumas siglas utilizadas como Enums foram padronizadas no formato inlg√™s americano, com apenas as inicais
+Algumas siglas utilizadas como Enums foram padronizadas no formato inlgÍs americano, com apenas as inicais
 
 ```
 	- SAVINGS_ACCOUNT("S"),
@@ -83,9 +84,9 @@ Algumas siglas utilizadas como Enums foram padronizadas no formato inlg√™s ameri
 	- GUEST("G");
 ```
 
-### CURLs usados na aplicado contendo massas v√°lidas para testes iniciais
+### CURLs usados na aplicado contendo massas v·lidas para testes iniciais
 
-1. Autentica√ß√£o do usu√°rio (retorno header) 
+1. AutenticaÁ„o do usu·rio (retorno header) 
 ```
 curl --request POST \
   --url http://localhost:443/signin \
@@ -97,7 +98,7 @@ curl --request POST \
 }'
 ```
 ------------------------------------------------------------------------------------
-2. Cadastro de Pessoas e Contas Banc√°rias
+2. Cadastro de Pessoas e Contas Banc·rias
 ```
 curl --request POST \
   --url http://localhost:443/person \
@@ -116,7 +117,7 @@ curl --request POST \
 }'
 ```
 ------------------------------------------------------------------------------------
-3. Atualiza√ß√£o de Pessoas e Contas Banc√°rias
+3. AtualizaÁ„o de Pessoas e Contas Banc·rias
 ```
 curl --request PUT \
   --url http://localhost:443/person \
@@ -135,7 +136,7 @@ curl --request PUT \
 }'
 ```
 ------------------------------------------------------------------------------------
-4. Listagem de Pessoas e Contas Banc√°rias
+4. Listagem de Pessoas e Contas Banc·rias
 ```
 curl --request GET \
   --url http://localhost:443/person \
@@ -144,7 +145,7 @@ curl --request GET \
   --cookie JSESSIONID=3293BFB3D6D29E5843FA87787986EE3C
   ```
 ------------------------------------------------------------------------------------
-5. Filtro de Pessoas e Contas Banc√°rias
+5. Filtro de Pessoas e Contas Banc·rias
 ```
 curl --request GET \
   --url http://localhost:443/person/1 \
@@ -153,7 +154,7 @@ curl --request GET \
   --cookie JSESSIONID=1FD7178A60B11D73F549BF00DC6A0CC9
  ``` 
 ------------------------------------------------------------------------------------
-6. Filtro de Pessoas e Contas Banc√°rias
+6. Filtro de Pessoas e Contas Banc·rias
 ```
 curl --request POST \
   --url http://localhost:443/finantialtransaction \
@@ -167,7 +168,7 @@ curl --request POST \
 }'
 ```
 ------------------------------------------------------------------------------------
-7. Exclus√£o de Pessoas e Contas Banc√°rias
+7. Exclus„o de Pessoas e Contas Banc·rias
 ```
 curl --request DELETE \
   --url http://localhost:443/person/1 \
@@ -176,7 +177,7 @@ curl --request DELETE \
   --cookie JSESSIONID=4C0B88BB1C4C01DD9E199A8A6CC9AEDC
 ```
 ------------------------------------------------------------------------------------
-8. Cadastro de usu√°rio da aplica√ß√£o
+8. Cadastro de usu·rio da aplicaÁ„o
 ```
 curl --request POST \
   --url http://localhost:443/users \
@@ -191,9 +192,9 @@ curl --request POST \
 	"role":"M"
 }'
 ```
-### Guias, Ferramentas e Bibliotecas utilizados no desenvolvimento dessa aplica√ß√£o
+### Guias, Ferramentas e Bibliotecas utilizados no desenvolvimento dessa aplicaÁ„o
 
-| Refer√™ncias                                             |
+| ReferÍncias                                             |
 | ------------------------------------------------------- |
 | https://spring.io/guides/gs/serving-web-content/        |
 | https://spring.io/guides/gs/accessing-data-rest/        | 
